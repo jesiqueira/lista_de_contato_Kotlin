@@ -4,4 +4,7 @@
     
     <string name="menu_1">Memu1</string>
     <string name="menu_2">Memu2</string>
+    
+    <string name="open_drawer">Abrir</string>
+    <string name="closer_drawer">Fechar</string>
 </resources>
