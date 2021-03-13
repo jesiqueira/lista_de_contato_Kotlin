@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Lista de Contato</string>
-    <string name="iv_photograph_content_description">Photograph</string>
+    <string name="iv_photograph_content_description">Foto de Contato</string>
+    
+    <string name="menu_1">Memu1</string>
+    <string name="menu_2">Memu2</string>
 </resources>
