@@ -7,14 +7,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactAdapterViewHolder>(){
+class ContactAdapter (var listener: ClickItemContactListener): RecyclerView.Adapter<ContactAdapter.ContactAdapterViewHolder>(){
 
     private val list: MutableList<Contact> = mutableListOf()
 
 //    Cria cada item visual da tela
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactAdapterViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.contact_item, parent, false) //responsável por carregar o layout
-        return  ContactAdapterViewHolder(view)
+        return  ContactAdapterViewHolder(view, list, listener)
     }
 
 //    Popular item na lista
@@ -34,10 +34,17 @@ class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactAdapterViewHol
     }
 
 //    Gerencia toda lista
-    class ContactAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ContactAdapterViewHolder(itemView: View, var list: List<Contact>, var listener: ClickItemContactListener) : RecyclerView.ViewHolder(itemView){
         private val tvName: TextView = itemView.findViewById(R.id.tv_name)
         private val tvPhone: TextView = itemView.findViewById(R.id.tv_phone)
         private val ivPhotograph: ImageView = itemView.findViewById(R.id.iv_photograph)
+
+        init {
+            itemView.setOnClickListener {
+                listener.clickItemContact(list[adapterPosition])
+            }
+        }
+
         fun bind(contact: Contact){
             tvName.text = contact.name
             tvPhone.text = contact.phone
